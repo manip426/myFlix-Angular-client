@@ -155,7 +155,7 @@ export class UserRegistrationService {
   /**
    * get the information about a genre
    * @param genre genre of the movie
-   * @returns movie genre data
+   * @returns movie genre Data
    */
   public getGenre(genre: string): Observable<any> {
     const token = localStorage.getItem('token');
