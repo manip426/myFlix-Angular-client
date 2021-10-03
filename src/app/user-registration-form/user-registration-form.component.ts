@@ -2,7 +2,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 // components
-import { FetchDataApiService } from '../fetch-api-data.service';
+import { FetchApiDataService } from '../fetch-api-data.service';
 
 // Material modules
 import { MatDialogRef } from '@angular/material/dialog';
@@ -16,10 +16,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UserRegistrationFormComponent implements OnInit {
 
-  /**
-   * Required form fields for the user registration
-   */
-  @Input() userData = { Username: '', Password: '', Email: '', Birthday: ''};
+  @Input() userData = {
+    name: '',
+    lastName: '',
+    birthday: '',
+    country: '',
+    email: '',
+    username: '',
+    password: '',
+  };
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -33,18 +38,21 @@ export class UserRegistrationFormComponent implements OnInit {
    * Register a new user and save user information and login credentials to the database
    */
   registerUser(): void {
-    this.fetchApiData.userRegistration(this.userData).subscribe((response) => {
+    this.fetchApiData.userRegistration(this.userData).subscribe(
+      () => {
       // Logic for successful user registration needs to be implemented here!
       this.dialogRef.close(); // will close the modal on success
       this.snackBar.open('Welcome, you are now registered. You can now go to login', 'OK', {
-        duration: 3000
+        duration: 3000,
       });
-    }, (response) => {
-
+    },
+    // Login unsuccessful.
+    (response) => {
+      console.log(response);
       this.snackBar.open(response, 'OK', {
-        duration: 3000
+        duration: 3000,
       });
-    });
-  }
-
+    }
+  );
+}
 }
