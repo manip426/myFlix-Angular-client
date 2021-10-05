@@ -1,0 +1,31 @@
+<style>
+  .panel-buttons{
+    display: flex;
+    justify-content: center;
+
+  }
+</style>
+<h2 style="text-align: center;">Welcome to myFlix</h2>
+
+
+  <div class="panel-buttons">
+
+    <div>
+    <button
+      mat-raised-button
+      (click)="openUserRegistrationDialog()"
+      style="margin: 10px;"
+      color="primary"
+    >
+      Sign Up
+    </button>
+    <button
+      mat-raised-button
+      (click)="openLoginDialog()"
+      style="margin: 10px;"
+      color="primary"
+    >
+      Login
+    </button>
+    </div>
+  </div>

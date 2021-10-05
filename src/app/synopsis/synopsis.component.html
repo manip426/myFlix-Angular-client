@@ -1,0 +1,42 @@
+<div style="display: flex; justify-content: center;">
+    <button mat-fab color="primary" aria-label="go to main page" (click)="goBack()">
+        <mat-icon>home</mat-icon>
+      </button>
+    <mat-card style="width: 200px;">
+        <mat-card-title style="display: flex;">{{movie.Title}}</mat-card-title>
+
+        <mat-card-subtitle style="display: flex; margin-top: 20px;">{{movie.Description}}</mat-card-subtitle>
+        <mat-card-subtitle img style="display: flex; justify-content: center;"><img src={{movie.ImagePath}}/></mat-card-subtitle>
+        <mat-form-field>
+            <!-- <mat-card-subtitle style="display: flex;">let your Comment</mat-card-subtitle>    -->
+            <input
+              matInput
+              [(ngModel)]="review.Comment"
+              placeholder="let your Comment"
+              type="text"
+              name="Comment"
+              required
+            >
+        </mat-form-field>
+        <mat-form-field>
+            <input
+            matInput
+            [(ngModel)]="review.Rating"
+            placeholder="Rating"
+            type="text"
+            name="Rating 0-5"
+            required
+            pattern="^$|^([0-5]|[0][0][5])?"
+          >
+        </mat-form-field>
+        <button  color="primary" aria-label="go to main page" (click)="letReview(this.review)">
+            let review
+        </button>
+        <div style="display: flex; flex-direction: column-reverse">
+            <mat-card *ngFor="let review of movie.Reviews">
+                <mat-card-subtitle  style="display: flex;">Comment: {{review.Comment}}</mat-card-subtitle>
+                <mat-card-subtitle style="display: flex;">Rating: {{review.Rating}}</mat-card-subtitle>
+            </mat-card>
+        </div>
+    </mat-card>
+</div>

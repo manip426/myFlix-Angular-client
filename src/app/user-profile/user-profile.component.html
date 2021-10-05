@@ -1,0 +1,43 @@
+<div style="display: flex; justify-content: center;">
+    <mat-card style="width: 300px;">
+            <mat-card-title>{{userData.Username}}</mat-card-title>
+            <mat-card-actions>
+                <button
+                mat-raised-button
+                (click)="openUserUpdateDialog()"
+                color="basic"
+                >
+                <mat-icon>face</mat-icon>
+                change Username
+                </button>
+
+            </mat-card-actions>
+                <mat-card-subtitle></mat-card-subtitle>
+                <mat-card-subtitle>{{userData.Email}}</mat-card-subtitle>
+                <mat-card-subtitle>birthday {{userData.Birthday | date:"dd/MM/yyyy" }}</mat-card-subtitle>
+            <mat-card-title *ngIf="favoriteMovies && favoriteMovies.length">Favorite Movies: </mat-card-title>
+        <mat-card *ngFor="let favoriteMovie of favMoviesName; let i=index;" style=" margin: 20px; display: flex; flex-direction: row; justify-content: space-around;">
+            <div >
+                <mat-card-subtitle><img src={{favoriteMovie.ImagePath}} style="width: 100px;" ></mat-card-subtitle>
+                <mat-card-subtitle>{{favoriteMovie.Title}}</mat-card-subtitle>
+            </div>
+            <mat-card-actions style="display: flex; align-items: center;">
+
+                <button
+                mat-fab color="warn" aria-label="delete icon"
+                (click)="deleteMovie(favoriteMovie._id, i)"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+
+
+        <button mat-fab color="primary" aria-label="go to main page" (click)="goBack()">
+            <mat-icon>home</mat-icon>
+          </button>
+
+
+
+    </mat-card>
+</div>

@@ -1,13 +1,10 @@
-// Core modules
 import { Component, OnInit, Input } from '@angular/core';
-
-// components
-import { FetchApiDataService } from '../fetch-api-data.service';
-
-// Material modules
+// this is used to close the dialog on success
 import { MatDialogRef } from '@angular/material/dialog';
+// This brings in the API calls
+import { ApiDataService } from '../fetch-api-data.service';
+// this is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
-
 
 @Component({
   selector: 'app-user-registration-form',
@@ -16,43 +13,33 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UserRegistrationFormComponent implements OnInit {
 
-  @Input() userData = {
-    name: '',
-    lastName: '',
-    birthday: '',
-    country: '',
-    email: '',
-    username: '',
-    password: '',
-  };
+  @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
   constructor(
-    public fetchApiData: FetchApiDataService,
+    public fetchApiData: ApiDataService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
-    public snackBar: MatSnackBar
-  ) {}
+    public snackBar: MatSnackBar) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
 
   /**
-   * Register a new user and save user information and login credentials to the database
-   */
+   * This is the function responsible for sending the form inputs to the backend for registration
+  */
   registerUser(): void {
-    this.fetchApiData.userRegistration(this.userData).subscribe(
-      () => {
-      // Logic for successful user registration needs to be implemented here!
-      this.dialogRef.close(); // will close the modal on success
-      this.snackBar.open('Welcome, you are now registered. You can now go to login', 'OK', {
-        duration: 3000,
+    this.fetchApiData.userRegistration(this.userData).subscribe((result) => {
+      // Logic for a successful user registration goes here! (To be implemented)
+      console.log('user is registered')
+      this.dialogRef.close(); // This will close the modal on success!
+      this.snackBar.open(result, 'OK', {
+        duration: 2000
       });
-    },
-    // Login unsuccessful.
-    (response) => {
-      console.log(response);
-      this.snackBar.open(response, 'OK', {
-        duration: 3000,
+    }, (result) => {
+      this.snackBar.open(result, 'OK', {
+        duration: 2000
       });
-    }
-  );
-}
+    });
+  }
+
 }

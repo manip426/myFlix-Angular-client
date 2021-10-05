@@ -1,12 +1,9 @@
-// Core modules
 import { Component } from '@angular/core';
-
-// components
-import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
-import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
-
-// material components
+// import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
+// import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MovieCardComponent } from './movie-card/movie-card.component';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 
 @Component({
@@ -15,23 +12,27 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'filmopedia-Angular-client';
+  title = 'myFlix-Angular-client';
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private route: ActivatedRoute,
+    public Router: Router) { }
 
-  // Open user registration dialog when "Sign up" button is clicked.
-  openUserRegistrationDialog(): void {
-    this.dialog.open(UserRegistrationFormComponent, {
-      // Set the width of the dialog window.
-      width: '280px',
-    });
+  openMoviesDialog(): void {
+    this.dialog.open(MovieCardComponent, { width: '500px' });
   }
 
-  // Open user registration dialog when "Log in" button is clicked.
-  openUserLoginDialog(): void {
-    this.dialog.open(UserLoginFormComponent, {
-      // Set the width of the dialog window.
-      width: '280px',
-    });
+  goToProfile(): void {
+    this.Router.navigate(['profile']);
   }
+
+  logOut(): void {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    this.Router.navigate(['welcome']);
+
+
+  }
+
 }

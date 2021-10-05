@@ -1,0 +1,10 @@
+<div style="display: flex; justify-content: center;">
+    <mat-card style="width: 300px; ">
+        <mat-card-title style="display: flex; justify-content: center;">Director: {{director.Name.Name}}</mat-card-title>
+        <mat-card-subtitle style="display: flex;">Bio:{{director.Name.Bio}}</mat-card-subtitle>
+        <mat-card-subtitle style="display: flex;">Birth:{{director.Name.Birth}}</mat-card-subtitle>
+        <button mat-fab color="primary" aria-label="go to main page" (click)="goBack()">
+            <mat-icon>home</mat-icon>
+          </button>
+    </mat-card>
+</div>
