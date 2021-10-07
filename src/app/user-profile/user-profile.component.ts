@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiDataService } from '../fetch-api-data.service'
+import { UserRegistrationService } from '../fetch-api-data.service'
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateUserdataComponent } from '../update-userdata/update-userdata.component'
@@ -17,7 +17,7 @@ export class UserProfileComponent implements OnInit {
   favMoviesName: any = [];
 
   constructor(
-    public fetchApiData: ApiDataService,
+    public fetchApiData: UserRegistrationService,
     public Router: Router,
     public dialog: MatDialog
   ) {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // this is used to close the dialog on success
 import { MatDialogRef } from '@angular/material/dialog';
 // This brings in the API calls
-import { ApiDataService } from '../fetch-api-data.service';
+import { UserRegistrationService } from '../fetch-api-data.service';
 // this is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -17,7 +17,7 @@ export class UpdateUserdataComponent implements OnInit {
 
 
   constructor(
-    public fetchApiData: ApiDataService,
+    public fetchApiData: UserRegistrationService,
     public dialogRef: MatDialogRef<UpdateUserdataComponent>,
     public snackBar: MatSnackBar) { }
 

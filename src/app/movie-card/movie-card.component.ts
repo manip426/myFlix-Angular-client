@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiDataService } from '../fetch-api-data.service'
+import { UserRegistrationService } from '../fetch-api-data.service'
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -13,7 +13,7 @@ export class MovieCardComponent {
   movies: any[] = [];
 
   constructor(
-    public fetchApiData: ApiDataService,
+    public fetchApiData: UserRegistrationService,
     public Router: Router,
     public dialog: MatDialog) { }
 

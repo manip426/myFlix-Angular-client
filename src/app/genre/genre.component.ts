@@ -1,7 +1,7 @@
 import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiDataService } from '../fetch-api-data.service'
+import { UserRegistrationService } from '../fetch-api-data.service'
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -17,7 +17,7 @@ export class GenreComponent implements OnInit {
   Description: any = '';
   constructor(
     private route: ActivatedRoute,
-    public fetchApiData: ApiDataService,
+    public fetchApiData: UserRegistrationService,
     public Router: Router,
     public dialog: MatDialog
   ) { }

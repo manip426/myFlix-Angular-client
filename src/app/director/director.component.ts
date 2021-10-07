@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiDataService } from '../fetch-api-data.service'
+import { UserRegistrationService } from '../fetch-api-data.service'
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -16,7 +16,7 @@ export class DirectorComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    public fetchApiData: ApiDataService,
+    public fetchApiData: UserRegistrationService,
     public Router: Router,
     public dialog: MatDialog) { }
 
