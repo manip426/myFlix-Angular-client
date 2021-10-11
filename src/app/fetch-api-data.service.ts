@@ -27,6 +27,28 @@ export class UserRegistrationService {
     );
   }
 
+  //-------movie review------/
+    /**
+     * Send Movie review and ratings
+     * @param id {object} director id
+     * @returns nothing
+    */
+    public sendReview(reviewDetails: any): Observable<any> {
+      console.log(reviewDetails);
+      const token = localStorage.getItem('token')
+      return this.http.post(
+        apiUrl + 'movies/' + reviewDetails.MovieID + '/reviews',
+        reviewDetails,
+        {
+          headers: new HttpHeaders(
+            {
+              Authorization: 'Bearer ' + token,
+            })
+        }).pipe(
+          catchError(this.handleError)
+        );
+    }
+    
   //-----login
     /**
      * Send a log in request
